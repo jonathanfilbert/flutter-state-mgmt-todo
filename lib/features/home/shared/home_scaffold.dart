@@ -5,12 +5,10 @@ import 'package:latihan_todo/features/home/shared/widgets/input_bottom_sheet.dar
 
 class HomeScaffold extends StatelessWidget {
   final Widget body;
-  final Function(TodoItemModel newTodo) onAddTodo;
 
   const HomeScaffold({
     Key? key,
     required this.body,
-    required this.onAddTodo,
   }) : super(key: key);
 
   @override
@@ -20,10 +18,9 @@ class HomeScaffold extends StatelessWidget {
         isScrollControlled: true,
         context: context,
         backgroundColor: Colors.transparent,
-        builder: (BuildContext context) {
+        builder: (context) {
           return InputBottomSheet(
             onSubmit: (TodoItemModel newTodo) {
-              onAddTodo(newTodo);
               Navigator.of(context).pop();
             },
           );

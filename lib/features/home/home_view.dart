@@ -4,13 +4,8 @@ import 'package:latihan_todo/features/home/widgets/title_text.dart';
 import 'package:latihan_todo/features/home/widgets/todo_list.dart';
 
 class HomeView extends StatelessWidget {
-  final List<TodoItemModel> todos;
-  final Function(TodoItemModel todoItemModel) onCheckTodo;
-
   const HomeView({
     Key? key,
-    required this.todos,
-    required this.onCheckTodo,
   }) : super(key: key);
 
   @override
@@ -27,10 +22,7 @@ class HomeView extends StatelessWidget {
               height: 12.0,
             ),
             TodoList(
-              todos: todos,
-              onCheckTodo: (TodoItemModel todoItem) {
-                onCheckTodo(todoItem);
-              },
+              onCheckTodo: (TodoItemModel todoItem) {},
             ),
           ],
         ),
