@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:latihan_todo/features/home/model/todo_item_model.dart';
 import 'package:latihan_todo/features/home/shared/widgets/floating_cta.dart';
 import 'package:latihan_todo/features/home/shared/widgets/input_bottom_sheet.dart';
+import 'package:latihan_todo/shared/bloc/home/home_cubit.dart';
 
 class HomeScaffold extends StatelessWidget {
   final Widget body;
-  final Function(TodoItemModel newTodo) onAddTodo;
 
   const HomeScaffold({
     Key? key,
     required this.body,
-    required this.onAddTodo,
   }) : super(key: key);
 
   @override
@@ -23,7 +23,7 @@ class HomeScaffold extends StatelessWidget {
         builder: (BuildContext context) {
           return InputBottomSheet(
             onSubmit: (TodoItemModel newTodo) {
-              onAddTodo(newTodo);
+              context.read<HomeCubit>().addTodos(newTodo);
               Navigator.of(context).pop();
             },
           );
